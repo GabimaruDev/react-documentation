@@ -10,3 +10,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.board-row {
+  button {
+    width: 60px;
+    height: 60px;
+    border: solid gray 1px;
+    font-size: 1.5rem;
+  }
+}
