@@ -16,6 +16,7 @@ body {
     width: 60px;
     height: 60px;
     border: solid gray 1px;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    float: left;
   }
 }
