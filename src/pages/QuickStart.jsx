@@ -62,12 +62,12 @@ export default function App() {
 
 	return (
 		<div>
-			<div className="flex flex-col max-w-5xl mx-auto justify-center">
-				<div className="flex flex-col gap-3 mx-auto m-6">
+			<div className="flex flex-col gap-10 my-10 max-w-5xl mx-auto justify-center px-5">
+				<div className="flex flex-col gap-3 text-center">
 					<h2 className="text-4xl">Создание и вложение компонентов</h2>
 					<Button />
 				</div>
-				<div className="flex flex-col gap-3 mx-auto m-6">
+				<div className="flex flex-col gap-3 text-center">
 					<h2 className="text-4xl">Отображение данных</h2>
 					<div className="flex flex-col justify-center">
 						<a href="https://music.yandex.ru/artist/6487554?utm_source=desktop&utm_medium=copy_link" target="_blank" rel="noreferrer" className="rounded-full mx-auto">
@@ -76,24 +76,24 @@ export default function App() {
 						<a href="https://music.yandex.ru/artist/6487554?utm_source=desktop&utm_medium=copy_link" target="_blank" rel="noreferrer" className="text-center text-2xl font-bold">{ coldcarti.name }</a>
 					</div>
 				</div>
-				<div className="flex flex-col gap-3 mx-auto m-6">
+				<div className="flex flex-col gap-3 text-center">
 					<h2 className="text-4xl">Условный рендеринг (с использованием хука useState)</h2>
 					<a className="w-fit mx-auto" href="https://www.youtube.com/watch?v=TeFyOF1Yyrk" target="_blank" rel="noreferrer"><img width={500} src={choice ? Puma : Pantera} alt="" /></a>
 					<p className="text-2xl mx-auto">{choice ? ("С пумой") : ("С пантерой")}</p>
 					<button onClick={() => setChoice(choice => !choice)} className="text-lg border-2 w-fit mx-auto px-6 py-3">Поменять выбор</button>
 				</div>
 
-				<div className="flex flex-col gap-3 mx-auto m-6">
+				<div className="flex flex-col gap-3 text-center">
 					<h2 className="text-4xl mx-auto">Рендеринг списков</h2>
 					<p className="text-2xl">Если это домашнее животное, то отметить <span className="text-green-600">зелёным</span> цветом, иначе <span className="text-red-500">красным</span> цветом</p>
-					<ul className="text-center">
+					<ul className="text-center border-2 p-5 px-10 w-fit mx-auto">
 						{ listItems }
 					</ul>
 				</div>
 
-				<div className="flex flex-col gap-3 mx-auto m-6">
-					<h2 className="text-4xl mx-auto">Счетчики</h2>
-					<div className="flex gap-24">
+				<div className="flex flex-col gap-3 mx-auto">
+					<h2 className="text-4xl text-center">Счетчики</h2>
+					<div className="flex max-md:flex-col gap-24 max-md:gap-5">
 						<div className="flex flex-col gap-3">
 							<p className="text-2xl">Обновляются отдельно</p>
 							<div className="flex flex-col gap-2">
