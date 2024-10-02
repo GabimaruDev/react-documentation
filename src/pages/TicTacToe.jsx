@@ -5,6 +5,7 @@ function Square({ value, onSquareClick }) {
 	return <button onClick={onSquareClick}>{value}</button>
 }
 
+
 function Board({ xIsNext, squares, onPlay }){
 	function calculateWinner(squares) {
 		const lines = [
@@ -55,7 +56,7 @@ function Board({ xIsNext, squares, onPlay }){
 
 	return (
 		<div>
-            <div className="mx-auto text-xl py-2">{status}</div>
+            <div className="mx-auto text-xl py-2 text-center">{status}</div>
 			<div className="board-row">
 				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -78,23 +79,25 @@ function Board({ xIsNext, squares, onPlay }){
 
 
 export default function TicTacToe() {
-    const [xIsNext, setXIsNext] = useState(true);
     const [history, setHistory] = useState([Array(9).fill(null)]);
-    const currentSquares = history[history.length - 1];
+	const [currentMove, setCurrentMove] = useState(0);
+    const xIsNext = currentMove % 2 === 0;
+    const currentSquares = history[currentMove];
 
     function handlePlay(nextSquares) {
-        setHistory([...history, nextSquares])
-        setXIsNext(!xIsNext)
+		const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
+        setHistory(nextHistory)
+		setCurrentMove(nextHistory.length - 1)
     }
 
-	function jumpTo(nextMove) {
-
+	function jumpTo(move) {
+		setCurrentMove(move)
 	}
 
 	const moves = history.map((squares, move) => {
 		let description
 		if (move > 0) {
-			description = "Перейти на ход #" + move
+			description = "Перейти на ход №" + move
 		} else {
 			description = "Перейти к началу игры"
 		}
@@ -107,10 +110,10 @@ export default function TicTacToe() {
 	})
 
     return (
-        <div className="max-w-fit mx-auto h-[calc(100svh-6.5rem)] flex max-sm:flex-col items-center mt-10 gap-10 max-sm:gap-0">
+        <div className="max-w-fit mx-auto h-[calc(100svh-9rem)] flex max-sm:flex-col items-center my-5 gap-10 max-sm:gap-0">
 			<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             <div>
-                <ol className="flex flex-col gap-1 pt-11 list-decimal">{moves}</ol>
+                <ol className="flex flex-col gap-[0.22rem] sm:pt-11 list-decimal">{moves}</ol>
             </div>
         </div>
     );

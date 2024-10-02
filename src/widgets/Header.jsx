@@ -1,6 +1,6 @@
 const Header = () => {
     return (
-        <div className="bg-gray-300 h-16 px-5 flex items-center sticky top-0 justify-center gap-10 text-center text-xl">
+        <div className="bg-gray-300 h-16 px-5 flex items-center sticky top-0 justify-center gap-10 text-center text-xl max-[390px]:gap-5">
             <a href="/">Главная</a>
             <a href="/quickstart">Quick Start</a>
             <a href="/tic-tac-toe">Tic-Tac-Toe</a>
