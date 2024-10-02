@@ -1,12 +1,16 @@
 import { useState } from "react";
 
 
-function Square({ value, onSquareClick }) {
-	return <button onClick={onSquareClick}>{value}</button>
-}
-
-
 function Board({ xIsNext, squares, onPlay }){
+	function Square({ value, onSquareClick }) {
+		return <button onClick={onSquareClick}>{value}</button>
+	}
+	
+	function renderSquare(i) {
+		return <Square key={i} value={squares[i]} onSquareClick={() => handleClick(i)} />
+	}
+
+
 	function calculateWinner(squares) {
 		const lines = [
 			[0, 1, 2],
@@ -30,7 +34,6 @@ function Board({ xIsNext, squares, onPlay }){
 
 	const winner = calculateWinner(squares)
 
-
 	function handleClick(i) {
 		if (winner || squares[i]) {
 			return
@@ -53,25 +56,17 @@ function Board({ xIsNext, squares, onPlay }){
 		status = "Следующий ход: " + (xIsNext ? "X" : "O")
 	}
 
+	const rows = 3
+	const cells = 3
 
 	return (
-		<div>
-            <div className="mx-auto text-xl py-2 text-center">{status}</div>
-			<div className="board-row">
-				<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-				<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-				<Square value={squares[2]} onSquareClick={() => handleClick(2)} />
-			</div>
-			<div className="board-row">
-				<Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-				<Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-				<Square value={squares[5]} onSquareClick={() => handleClick(5)} />
-			</div>
-			<div className="board-row">
-				<Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-				<Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-				<Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-			</div>
+		<div className="flex flex-col">
+            <div className="mx-auto t-xl py-2 text-center">{status}</div>
+			{[...Array(rows).keys()].map(row => (
+				<div className="board-row" key={row}>
+					{[...Array(cells).keys()].map(cell => renderSquare(row * cells + cell))}
+				</div>
+        	))}
 		</div>
 	)
 }
@@ -96,7 +91,11 @@ export default function TicTacToe() {
 
 	const moves = history.map((squares, move) => {
 		let description
-		if (move > 0) {
+		if (move == currentMove && currentMove == 0) {
+			description = "Вы в начале игры"
+		} else if (move == currentMove) {
+			description = "Вы на ходe №" + move
+		} else if (move > 0 && move != currentMove) {
 			description = "Перейти на ход №" + move
 		} else {
 			description = "Перейти к началу игры"
@@ -104,16 +103,16 @@ export default function TicTacToe() {
 
 		return (
 			<li key={move}>
-				<button onClick={() => jumpTo(move)} >{description}</button>
+				<button onClick={() => jumpTo(move)}>{description}</button>
 			</li>
 		)
 	})
 
     return (
-        <div className="max-w-fit mx-auto h-[calc(100svh-9rem)] flex max-sm:flex-col items-center my-5 gap-10 max-sm:gap-0">
+        <div className="max-w-fit mx-auto min-h-[calc(100svh-6.5rem)] flex max-sm:flex-col items-center my-5 gap-10 max-sm:gap-2">
 			<Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
             <div>
-                <ol className="flex flex-col gap-[0.22rem] sm:pt-11 list-decimal">{moves}</ol>
+                <ol className="flex flex-col gap-1.5 sm:pt-11 list-decimal min-w-52 t-lg">{moves}</ol>
             </div>
         </div>
     );
