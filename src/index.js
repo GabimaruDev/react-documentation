@@ -5,7 +5,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Header from "./widgets/Header"
 import Main from "./pages/Main"
 import QuickStart from "./pages/QuickStart"
-import TicTacToe from "./pages/TicTacToe"
+import TicTacToe from "./pages/TicTacToe/TicTacToe"
 
 
 const router = createBrowserRouter(
