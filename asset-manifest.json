@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-documentation/static/css/main.b2608eba.css",
-    "main.js": "/react-documentation/static/js/main.a7c8a6a4.js",
+    "main.js": "/react-documentation/static/js/main.617cf7c7.js",
     "static/media/pantera.jpg": "/react-documentation/static/media/pantera.9c16395fdc8ea9f8d2ea.jpg",
     "static/media/puma.jpg": "/react-documentation/static/media/puma.c7e35d476ece5975bbc0.jpg",
     "index.html": "/react-documentation/index.html",
     "main.b2608eba.css.map": "/react-documentation/static/css/main.b2608eba.css.map",
-    "main.a7c8a6a4.js.map": "/react-documentation/static/js/main.a7c8a6a4.js.map"
+    "main.617cf7c7.js.map": "/react-documentation/static/js/main.617cf7c7.js.map"
   },
   "entrypoints": [
     "static/css/main.b2608eba.css",
-    "static/js/main.a7c8a6a4.js"
+    "static/js/main.617cf7c7.js"
   ]
 }
