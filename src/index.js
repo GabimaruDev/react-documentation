@@ -10,10 +10,10 @@ import TicTacToe from "./pages/TicTacToe/TicTacToe"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<Main />} />
-      <Route path="/quickstart" element={<QuickStart />} />
-      <Route path="/tic-tac-toe" element={<TicTacToe />} />
+    <Route path="react-documentation">
+      <Route path="/react-documentation" element={<Main />} />
+      <Route path="quickstart" element={<QuickStart />} />
+      <Route path="tic-tac-toe" element={<TicTacToe />} />
     </Route>
   )
 )
